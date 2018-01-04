@@ -1,0 +1,17 @@
+'use strict';
+module.exports = function(app) {
+  var lostItemController = require('../controllers/LostItemController');
+
+  app.route('/lost')
+    .get(lostItemController.get_items)
+    .post(lostItemController.create_item);
+
+
+  app.route('/lost/:itemId')
+    .get(lostItemController.get_item)
+    .put(lostItemController.update_item)
+    .delete(lostItemController.delete_item);
+
+  app.route('/lost/findSimilarItems')
+    .post(lostItemController.find_similar_items);
+};
