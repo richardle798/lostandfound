@@ -5,30 +5,30 @@ var lostItem = new Schema({
 	category: {
 		type: [{
       		type: String,
-      		enum: ['clothes','books','school_supplies','accessories','bottles','electronics','ids','keys','other']
+      		enum: ['clothes','books','school_supplies','accessories','bottles','electronics','cards','keys','other']
     	}],
 		required: 'Category is required'
 	},
 	description: String,
-	date_logged: {
+	dateLogged: {
 		type: Date,
 		default: Date.now
 	},
-	logger_name:{
+	loggerName:{
 		type: String,
 		required: 'logger_name is required'
 	},
-	contact_name:{
+	contactName:{
 		type: String,
 		required: 'contact_name is required'
 	},
-	contact_information:{
+	contactInformation:{
 		type: String,
 		required: 'contact_information is required'
 	},
-	column_one_data: String,
-	column_two_data: String,
-	column_three_data: String
+	columnOneData: String,
+	columnTwoData: String,
+	columnThreeData: String
 });
 
 module.exports = mongoose.model('LostItem', lostItem);

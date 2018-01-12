@@ -3,6 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+const styleSheet = require('./assets/styles.css');
+
+const backendRoot = '';
 
 Vue.config.productionTip = false
 
