@@ -16,15 +16,15 @@ var lostItem = new Schema({
 	},
 	loggerName:{
 		type: String,
-		required: 'logger_name is required'
+		required: 'logger name is required'
 	},
 	contactName:{
 		type: String,
-		required: 'contact_name is required'
+		required: 'contact name is required'
 	},
 	contactInformation:{
 		type: String,
-		required: 'contact_information is required'
+		required: 'contact information is required'
 	},
 	columnOneData: String,
 	columnTwoData: String,

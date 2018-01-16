@@ -13,9 +13,16 @@ app.use(morgan('combined'));
 
 //models
 const lostItem = require('./api/models/LostItem');
+const loggedItem = require('./api/models/LoggedItem');
+const foundItem = require('./api/models/FoundItem');
 
 //routes
 const lostItemRoutes = require('./api/routes/lostItemRoutes');
+const loggedItemRoutes = require('./api/routes/loggedItemRoutes');
+const foundItemRoutes = require('./api/routes/foundItemRoutes');
+
 lostItemRoutes(app);
+loggedItemRoutes(app);
+foundItemRoutes(app);
 
 module.exports = app;
