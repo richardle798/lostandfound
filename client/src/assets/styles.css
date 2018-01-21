@@ -91,14 +91,22 @@ padding-left:150%;
 	width: 100%;
 }
 
-.tableWithBorder{
+.similarItemsTable{
+    width:90%;
 	margin:auto;
 	padding-left:10%;
-	padding-right:10%;
+    padding-right:10%;
+    border-collapse: collapse;
 }
 
-.tableWithBorder td{
+.similarItemsTable th{
+    text-align: center;
+    background-color: #4B9CD3;
+    padding: 8px;
+}
+
+.similarItemsTable td, th{
+    border: 1px solid #ddd;
+    padding: 3px;
 	text-align:left;
-	padding-right:20px;
-	padding-bottom:10px;
 }

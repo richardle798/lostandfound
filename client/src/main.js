@@ -3,9 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueResource from 'vue-resource'
 const styleSheet = require('./assets/styles.css');
 
-const backendRoot = '';
+Vue.use(VueResource);
+Vue.http.options.root = 'http://localhost:3000/';
 
 Vue.config.productionTip = false
 

@@ -2,6 +2,7 @@
 
 var mongoose = require('mongoose');
 var LostItem = mongoose.model('LostItem');
+var LoggedItem = mongoose.model('LoggedItem');
 var Heap = require('heap');
  
 var SIMILAR_ITEMS_RETURN_AMOUNT = 20;
@@ -53,7 +54,7 @@ exports.find_similar_items = function(req, res) {
   var item = new LostItem(req.body);
   var itemCategory = item.category;
 
-  LostItem.find({category: itemCategory}, function(err, items) {
+  LoggedItem.find({category: itemCategory}, function(err, items) {
     if (err)
       res.send(err);
     
