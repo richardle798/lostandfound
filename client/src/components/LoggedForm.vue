@@ -1,9 +1,9 @@
 <template>
 	<div class="formFields">
-		<h2>Log Lost Item </h2>
+		<h2>Log Found Item </h2>
 		<div class="categoryFormat">
 			<label>Category:</label>
-			<select v-model="lostItem.category" v-on:change="resetColumnData">
+			<select v-model="loggedItem.category" v-on:change="resetColumnData">
 				<option value=""></option>
 				<option value="clothes">Clothing</option>
 				<option value="books">Books</option>
@@ -16,14 +16,14 @@
 			</select>
 		</div>
 		<div id="content">
-			<div v-if='lostItem.category === "clothes"'>
+			<div v-if='loggedItem.category === "clothes"'>
 				<table class="formNoBorder">
 					<tr>
 						<td>
 							<label>Type</label>
 						</td>
 						<td>
-							<select v-model="lostItem.columnOneData" class="form-control">
+							<select v-model="loggedItem.columnOneData" class="form-control">
 								<option value=""></option>
 								<option value="shirt">Shirt</option>
 								<option value="pants">Pants</option>
@@ -38,7 +38,7 @@
 							<label>Brand</label>
 						</td>
 						<td>
-							<input type="text" v-model="lostItem.columnTwoData">
+							<input type="text" v-model="loggedItem.columnTwoData">
 						</td>
 					</tr>
 					<tr>
@@ -46,19 +46,19 @@
 							<label>Primary Color</label>
 						</td>
 						<td>
-							<input type="text" v-model="lostItem.columnThreeData">
+							<input type="text" v-model="loggedItem.columnThreeData">
 						</td>
 					</tr>
 				</table>
 			</div>
-			<div v-else-if='lostItem.category === "accessories"'>
+			<div v-else-if='loggedItem.category === "accessories"'>
 				<table class="formNoBorder">
 					<tr>
 						<td>
 							<label>Type</label>
 						</td>
 						<td>
-							<select v-model="lostItem.columnOneData" class="form-control">
+							<select v-model="loggedItem.columnOneData" class="form-control">
 								<option value=""></option>
 								<option value="scarf">Scarf</option>
 								<option value="watch">Watch</option>
@@ -73,7 +73,7 @@
 							<label>Brand</label>
 						</td>
 						<td>
-							<input type="text" v-model="lostItem.columnTwoData">
+							<input type="text" v-model="loggedItem.columnTwoData">
 						</td>
 					</tr>
 					<tr>
@@ -81,19 +81,19 @@
 							<label>Primary Color</label>
 						</td>
 						<td>
-							<input type="text" v-model="lostItem.columnThreeData">
+							<input type="text" v-model="loggedItem.columnThreeData">
 						</td>
 					</tr>
 				</table>
 			</div>
-			<div v-else-if='lostItem.category === "books"'>
+			<div v-else-if='loggedItem.category === "books"'>
 				<table class="formNoBorder">
 					<tr>
 						<td>
 							<label>Type</label>
 						</td>
 						<td>
-							<select v-model="lostItem.columnOneData" class="form-control">
+							<select v-model="loggedItem.columnOneData" class="form-control">
 								<option value=""></option>
 								<option value="textbook">Textbook</option>
 								<option value="book">Book</option>
@@ -103,7 +103,7 @@
 							<label>Title</label>
 						</td>
 						<td>
-							<input type="text" v-model="lostItem.columnTwoData">
+							<input type="text" v-model="loggedItem.columnTwoData">
 						</td>
 					</tr>
 					<tr>
@@ -111,19 +111,19 @@
 							<label>Author</label>
 						</td>
 						<td>
-							<input type="text" v-model="lostItem.columnThreeData">
+							<input type="text" v-model="loggedItem.columnThreeData">
 						</td>
 					</tr>
 				</table>
 			</div>
-			<div v-else-if='lostItem.category === "schoolSupplies"'>
+			<div v-else-if='loggedItem.category === "schoolSupplies"'>
 				<table class="formNoBorder">
 					<tr>
 						<td>
 							<label>Type</label>
 						</td>
 						<td>
-							<select v-model="lostItem.columnOneData" class="form-control">
+							<select v-model="loggedItem.columnOneData" class="form-control">
 								<option value=""></option>
 								<option value="pencil">Pencil</option>
 								<option value="pen">Pen</option>
@@ -137,7 +137,7 @@
 							<label>Brand</label>
 						</td>
 						<td>
-							<input type="text" v-model="lostItem.columnTwoData">
+							<input type="text" v-model="loggedItem.columnTwoData">
 						</td>
 					</tr>
 					<tr>
@@ -145,19 +145,19 @@
 							<label>Primary Color</label>
 						</td>
 						<td>
-							<input type="text" v-model="lostItem.columnThreeData">
+							<input type="text" v-model="loggedItem.columnThreeData">
 						</td>
 					</tr>
 				</table>
 			</div>
-			<div v-else-if='lostItem.category === "electronics"'>
+			<div v-else-if='loggedItem.category === "electronics"'>
 				<table class="formNoBorder">
 					<tr>
 						<td>
 							<label>Type</label>
 						</td>
 						<td>
-							<select v-model="lostItem.columnOneData" class="form-control">
+							<select v-model="loggedItem.columnOneData" class="form-control">
 								<option value=""></option>
 								<option value="phone">Phone</option>
 								<option value="headphones">Headphones</option>
@@ -173,7 +173,7 @@
 							<label>Brand</label>
 						</td>
 						<td>
-							<input type="text" v-model="lostItem.columnTwoData">
+							<input type="text" v-model="loggedItem.columnTwoData">
 						</td>
 					</tr>
 					<tr>
@@ -181,19 +181,19 @@
 							<label>Primary Color</label>
 						</td>
 						<td>
-							<input type="text" v-model="lostItem.columnThreeData">
+							<input type="text" v-model="loggedItem.columnThreeData">
 						</td>
 					</tr>
 				</table>
 			</div>
-			<div v-else-if='lostItem.category === "cards"'>
+			<div v-else-if='loggedItem.category === "cards"'>
 				<table class="formNoBorder">
 					<tr>
 						<td>
 							<label>Type</label>
 						</td>
 						<td>
-							<select v-model="lostItem.columnOneData" class="form-control">
+							<select v-model="loggedItem.columnOneData" class="form-control">
 								<option value=""></option>
 								<option value="driver's license">Drivers License</option>
 								<option value="student ID">Student ID</option>
@@ -205,37 +205,37 @@
 							<label>Full Name</label>
 						</td>
 						<td>
-							<input type="text" v-model="lostItem.columnTwoData">
+							<input type="text" v-model="loggedItem.columnTwoData">
 						</td>
 					</tr>
 				</table>
 			</div>
-			<div v-else-if='lostItem.category === "bottles"'>
+			<div v-else-if='loggedItem.category === "bottles"'>
 				<table class="formNoBorder">
 					<tr>
 						<td>
 							<label>Brand</label>
 						</td>
 						<td>
-							<input type="text" v-model="lostItem.columnOneData">
+							<input type="text" v-model="loggedItem.columnOneData">
 						</td>
 						<td>
 							<label>Primary Color</label>
 						</td>
 						<td>
-							<input type="text" v-model="lostItem.columnTwoData">
+							<input type="text" v-model="loggedItem.columnTwoData">
 						</td>
 					</tr>
 				</table>
 			</div>
-			<div v-else-if='lostItem.category === "keys"'>
+			<div v-else-if='loggedItem.category === "keys"'>
 				<table class="formNoBorder">
 					<tr>
 						<td>
 							<label>Type</label>
 						</td>
 						<td>
-							<select v-model="lostItem.columnOneData" class="form-control">
+							<select v-model="loggedItem.columnOneData" class="form-control">
 								<option value=""></option>
 								<option value="house">House Key</option>
 								<option value="car">Car Key</option>
@@ -245,41 +245,33 @@
 					</tr>
 				</table>
 			</div>
-			<div v-else-if='lostItem.category === "other"'>
+			<div v-else-if='loggedItem.category === "other"'>
 				<table class="formNoBorder">
 					<tr>
 						<td>
 							<label>Item Name</label>
 						</td>
 						<td>
-							<input type="text" v-model="lostItem.columnOneData">
+							<input type="text" v-model="loggedItem.columnOneData">
 						</td>
 					</tr>
 				</table>
 			</div>
 		</div>
-		<div v-if='lostItem.category' id="formEnd">
+		<div v-if='loggedItem.category' id="formEnd">
 			<table class="formNoBorder">
 				<tr>
 					<td>
-						<label>Contact Name</label>
+						<label>Location Stored</label>
 					</td>
 					<td>
-						<input type="text" v-model="lostItem.contactName">
+						<input type="text" v-model="loggedItem.locationStored">
 					</td>
-					<td>
-						<label>Contact Information</label>
-					</td>
-					<td>
-						<input type="text" v-model="lostItem.contactInformation">
-					</td>
-				</tr>
-				<tr>
 					<td>
 						<label>Rho Responsible</label>
 					</td>
 					<td>
-						<input type="text" v-model="lostItem.loggerName">
+						<input type="text" v-model="loggedItem.loggerName">
 					</td>
 				</tr>
 				<tr>
@@ -287,7 +279,7 @@
 						<label>Description</label>
 					</td>
 					<td colspan="4">
-						<input class="descriptionBox" type="text" v-model="lostItem.description">
+						<input class="descriptionBox" type="text" v-model="loggedItem.description">
 					</td>
 				</tr>
 			</table>
@@ -303,15 +295,14 @@
 <script>
 
 export default {
-  name: "LostForm",
+  name: "LoggedForm",
   data: function() {
     return {
-			lostItem: {
+			loggedItem: {
       	category: "",
       	description: "",
       	loggerName: "",
-      	contactName: "",
-      	contactInformation: "",
+      	locationStored: "",
       	columnOneData: "",
       	columnTwoData: "",
 				columnThreeData: ""
@@ -320,20 +311,20 @@ export default {
   },
   methods: {
     resetColumnData: function() {
-      this.lostItem.columnOneData = "";
-      this.lostItem.columnTwoData = "";
-      this.lostItem.columnThreeData = "";
+      this.loggedItem.columnOneData = "";
+      this.loggedItem.columnTwoData = "";
+      this.loggedItem.columnThreeData = "";
 		},
 		formSubmit: function() {
-			if(this.lostItem.category === "" ||
-			this.lostItem.loggerName === "" ||
-			this.lostItem.contactName === "" ||
-			this.lostItem.contactInformation === ""){
+			if(this.loggedItem.category === "" ||
+			this.loggedItem.loggerName === "" ||
+			this.loggedItem.contactName === "" ||
+			this.loggedItem.contactInformation === ""){
 				alert('Please fill out all required fields');
 				return;
 			}
 
-			this.$router.push({ name: 'LostSimilarItems' , params: { lostItem: this.lostItem}});
+			this.$router.push({ name: 'LostSimilarItems' , params: { loggedItem: this.loggedItem}});
 		}
   }
 };

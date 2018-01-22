@@ -3,15 +3,14 @@ body {
     padding: 0 !important;
 }
 .topHeader{
-  background-color: #bfa33d;
-  padding-top:1px;
-  padding-bottom:1px;
   margin:auto;
 }
 
 .bottomText{
+  padding-left:10px;
+  text-align: left;
   vertical-align:bottom;
-  bottom:0;
+  margin-bottom: 5px;
 }
 
 .topHeader h1{
@@ -20,9 +19,8 @@ body {
 
 /* Add a black background color to the top navigation */
 .topnav {
-    background-color: #333;
+    background-color: #4B9CD3;
     overflow: hidden;
-    margin-bottom:50px;
 }
 
 /* Style the links inside the navigation bar */

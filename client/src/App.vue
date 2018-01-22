@@ -1,12 +1,18 @@
 <template>
   <div id="app">
+    <top-bar/>
     <router-view/>
   </div>
 </template>
 
 <script>
+import TopNav from './components/TopNav.vue'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    'top-bar':TopNav
+  }
 }
 </script>
 
@@ -17,6 +23,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #000000;
-  margin-top: 60px;
 }
 </style>
