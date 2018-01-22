@@ -15,7 +15,7 @@ export default new Router({
       component: LostForm
     },
     {
-      path: '/lost/similar_items',
+      path: '/lost/similar-items',
       name: 'LostSimilarItems',
       component: LostSimilarItems,
       props:true

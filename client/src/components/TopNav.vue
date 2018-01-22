@@ -1,6 +1,6 @@
 <template>
 <div class="topHeader">
-<h1 class="bottomText">APO Lost and Found</h1>
+<h1 class="bottomText">UNC Lost and Found</h1>
 
   <div class="topnav">
     <router-link :to='{name:"LostForm"}'>Log Lost</router-link>
@@ -11,6 +11,6 @@
 
 <script>
 export default {
-  name: 'top-bar'
+  name: 'TopNav'
 }
 </script>
