@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h2> Lost Item</h2>
-		<table class="similarItemsTable">
+		<table class="itemsTable">
 			<tr>
 				<th>
 					Column One
@@ -33,7 +33,7 @@
 		</table>
 		<div v-if='similarItems.length != 0'>
 		<h2> Similar Items </h2>
-		<table class="similarItemsTable">
+		<table class="itemsTable">
 			<tr>
 				<th>
 					Column One

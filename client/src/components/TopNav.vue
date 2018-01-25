@@ -5,6 +5,9 @@
   <div class="topnav">
     <router-link :to='{name:"LostForm"}'>Log Lost</router-link>
     <router-link :to='{name:"LoggedForm"}'>Log Found</router-link>
+    <router-link :to='{name:"LostList"}'>View Lost Items</router-link>
+    <router-link :to='{name:"LoggedList"}'>View Logged Items</router-link>
+    <router-link :to='{name:"FoundList"}'>View Found Items</router-link>
 </div>
 </div>
 </template>
