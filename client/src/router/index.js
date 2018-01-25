@@ -6,6 +6,7 @@ import LoggedForm from '@/components/LoggedForm'
 import LostList from '@/components/LostList'
 import FoundList from '@/components/FoundList'
 import LoggedList from '@/components/LoggedList'
+import LoggedSimilarItems from '@/components/LoggedSimilarItems'
 
 Vue.use(Router)
 
@@ -21,6 +22,12 @@ export default new Router({
       path: '/lost/similar-items',
       name: 'LostSimilarItems',
       component: LostSimilarItems,
+      props:true
+    },
+    {
+      path: '/logged/similar-items',
+      name: 'LoggedSimilarItems',
+      component: LoggedSimilarItems,
       props:true
     },
     {

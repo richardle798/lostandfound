@@ -1,8 +1,8 @@
 <template>
 	<div class="page-body">
-		<h2> Lost Item</h2>
+		<h2>Logged Item</h2>
     <item-modal v-if="showItemModal" v-bind:item="detailItem">
-			<h2 slot="header">Logged Item</h2>
+			<h2 slot="header">Lost Item</h2>
 			<ul class="item-detail-list" slot="body">
 				<li>Category: {{detailItem.category}}</li>
 				<li>Column One: {{detailItem.columnOneData}}</li>
@@ -10,7 +10,8 @@
 				<li>Column Three: {{detailItem.columnThreeData}}</li>
 				<li>Description: {{detailItem.description}}</li>
 				<li>Logger Name: {{detailItem.loggerName}}</li>
-				<li>Location Stored: {{detailItem.locationStored}}</li>
+				<li>Contact Name: {{detailItem.contactName}}</li>
+				<li>Contact Information: {{detailItem.contactInformation}}</li>
 				<li>Date Logged: {{detailItem.dateLogged}}</li>
 			</ul>
 			<div slot="footer">
@@ -87,7 +88,7 @@
 		</div>
 		<div style="padding-top: 20px">
 			<button v-on:click="submitItem">
-				Log Lost Item
+				Log Found Item
 			</button>
 		</div>
 	</div>
@@ -97,7 +98,7 @@
 import ItemDetailsModal from './ItemDetailsModal'
 
 export default {
-	name: "LostSimilarItems",
+	name: "LoggedSimilarItems",
 	props: ['item'],
 	components:{
 		'item-modal': ItemDetailsModal
@@ -109,7 +110,8 @@ export default {
         category: "",
       	description: "",
       	loggerName: "",
-      	locationStored: "",
+      	contactName: "",
+				contactInformation: "",
       	columnOneData: "",
       	columnTwoData: "",
 				columnThreeData: "",
@@ -131,9 +133,9 @@ export default {
 				description: this.detailItem.description,
 				dateLogged: this.detailItem.dateLogged,
 				loggerName: this.detailItem.loggerName,
-				locationStored: this.detailItem.locationStored,
-				contactName: this.item.contactName,
-				contactInformation: this.item.contactName,
+				locationStored: this.item.locationStored,
+				contactName: this.detailItem.contactName,
+				contactInformation: this.detailItem.contactName,
 				columnOneData: this.detailItem.columnOneData,
 				columnTwoData: this.detailItem.columnTwoData,
 				columnThreeData: this.detailItem.columnThreeData
@@ -153,7 +155,7 @@ export default {
 			});
 		},
 		findSimilarItems : function(){
-			this.$http.post('lost/findSimilarItems', this.item).then( (response) => {
+			this.$http.post('logged/findSimilarItems', this.item).then( (response) => {
 
     		this.similarItems = response.body;
 
@@ -165,7 +167,8 @@ export default {
       this.detailItem.category = item.category[0];
       this.detailItem.description = item.description;
       this.detailItem.loggerName = item.loggerName;
-      this.detailItem.locationStored = item.locationStored;
+      this.detailItem.contactName = item.contactName;
+      this.detailItem.contactInformation = item.contactInformation;
       this.detailItem.columnOneData = item.columnOneData;
       this.detailItem.columnTwoData = item.columnTwoData;
       this.detailItem.columnThreeData = item.columnThreeData;

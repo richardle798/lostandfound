@@ -104,7 +104,7 @@ export default {
 				return;
 			}
 
-			this.$router.push({ name: 'LostSimilarItems' , params: { lostItem: this.lostItem}});
+			this.$router.push({ name: 'LostSimilarItems' , params: { item: this.lostItem}});
 		}
   }
 };

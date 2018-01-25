@@ -2,6 +2,11 @@ body {
     margin: 0 !important;
     padding: 0 !important;
 }
+
+.page-body{
+  margin-bottom: 5%;
+}
+
 .topHeader{
   margin:auto;
 }

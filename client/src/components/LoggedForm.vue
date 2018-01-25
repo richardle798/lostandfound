@@ -95,7 +95,7 @@ export default {
 				return;
 			}
 
-			this.$router.push({ name: 'LostSimilarItems' , params: { loggedItem: this.loggedItem}});
+			this.$router.push({ name: 'LoggedSimilarItems' , params: { item: this.loggedItem}});
 		}
   }
 };
