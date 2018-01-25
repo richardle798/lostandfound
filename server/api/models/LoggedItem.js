@@ -5,7 +5,7 @@ var loggedItem = new Schema({
 	category: {
 		type: [{
       		type: String,
-      		enum: ['clothes','books','school_supplies','accessories','bottles','electronics','cards','keys','other']
+      		enum: ['clothes','books','schoolSupplies','accessories','bottles','electronics','cards','keys','other']
     	}],
 		required: 'Category is required'
 	},

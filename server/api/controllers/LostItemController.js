@@ -60,13 +60,13 @@ exports.find_similar_items = function(req, res) {
     
     var itemHeap = new Heap(function(a, b){
       var aScore = 0, bScore = 0;
-      if(a.columnOneData == item.columnOneData) aScore++;
-      if(a.columnTwoData == item.columnTwoData) aScore++;
-      if(a.columnThreeData == item.columnThreeData) aScore++;
+      if(a.columnOneData.toLowerCase() === item.columnOneData.toLowerCase()) aScore++;
+      if(a.columnTwoData.toLowerCase() === item.columnTwoData.toLowerCase()) aScore++;
+      if(a.columnThreeData.toLowerCase() === item.columnThreeData.toLowerCase()) aScore++;
 
-      if(b.columnOneData == item.columnOneData) bScore++;
-      if(b.columnTwoData == item.columnTwoData) bScore++;
-      if(b.columnThreeData == item.columnThreeData) bScore++;
+      if(b.columnOneData.toLowerCase() === item.columnOneData.toLowerCase()) bScore++;
+      if(b.columnTwoData.toLowerCase() === item.columnTwoData.toLowerCase()) bScore++;
+      if(b.columnThreeData.toLowerCase() === item.columnThreeData.toLowerCase()) bScore++;
 
       var diff = bScore - aScore;
 
