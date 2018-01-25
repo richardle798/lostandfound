@@ -148,7 +148,7 @@ export default {
 			});
 		},
 		submitItem: function(item){
-			this.$http.post('lost', this.item).then( (response) => {
+			this.$http.post('logged', this.item).then( (response) => {
 				this.$router.push({ name: 'LostForm'});
   		}, (response) => {
    			alert('Could not save lost item' + response.body);

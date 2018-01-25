@@ -119,6 +119,7 @@ padding-left:150%;
 
 .itemsTable tr:hover{
     background-color: rgb(253, 198, 97);
+    cursor: pointer;
 }
 
 .modal-mask {
