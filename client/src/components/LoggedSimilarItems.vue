@@ -142,14 +142,14 @@ export default {
 			};
 
 			this.$http.post('found', foundItem).then( (response) => {
-				this.$router.push({ name: 'LostForm'});
+				this.$router.push({ name: 'LoggedForm'});
   		}, (response) => {
    			alert('Could not save similar item' + response.body);
 			});
 		},
 		submitItem: function(item){
 			this.$http.post('logged', this.item).then( (response) => {
-				this.$router.push({ name: 'LostForm'});
+				this.$router.push({ name: 'LoggedForm'});
   		}, (response) => {
    			alert('Could not save lost item' + response.body);
 			});

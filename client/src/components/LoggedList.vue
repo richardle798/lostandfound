@@ -1,6 +1,6 @@
 <template>
   <div class="page-body">
-		<h2>Logged Items</h2>
+		<h2>Found Items</h2>
     <item-modal v-if="showItemModal" v-bind:item="detailItem" v-on:close="showItemModal=false">
 			<h2 slot="header">Logged Item</h2>
 			<ul class="item-detail-list" slot="body">
