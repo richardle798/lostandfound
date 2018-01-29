@@ -187,4 +187,11 @@ padding-left:150%;
   .item-detail-list li{
     padding-bottom:5px;
   }
+
+  .search-bar{
+    text-align:left;
+    margin-bottom:1%;
+    float:left;
+    margin-left:5%
+  }
   

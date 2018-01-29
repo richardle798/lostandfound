@@ -1,6 +1,7 @@
 <template>
   <div class="page-body">
 		<h2>Lost Items</h2>
+  	<input class="search-bar" type="text" v-model="filter" placeholder="Filter Items">
     <item-modal v-if="showItemModal" v-bind:item="detailItem" v-on:close="showItemModal=false">
 			<h2 slot="header">Lost Item</h2>
 			<ul class="item-detail-list" slot="body">
@@ -33,7 +34,7 @@
 					Date Logged
 				</th>
 			</tr>
-			<tr v-for="lostItem in lostItems" v-on:click='getDetails(lostItem)'>
+			<tr v-for="lostItem in filteredItems" v-on:click='getDetails(lostItem)'>
 				<td>
 					{{lostItem.category[0]}}
 				</td>
@@ -76,7 +77,8 @@ export default {
 				columnThreeData: "",
 				dateLogged:""
       },
-      showItemModal: false		
+      showItemModal: false,
+			filter: ""
     }
 	},
 	methods:{
@@ -112,6 +114,24 @@ export default {
 	},
 	created(){
 		this.getLostItems();
+	},
+	computed: {
+		lowercaseFilter: function(){
+			return this.filter.toLowerCase();
+		},
+    filteredItems: function(){
+      return this.lostItems.filter(item => {
+      	return (item.category[0].toLowerCase().indexOf(this.lowercaseFilter) > -1 ||
+								item.description.toLowerCase().indexOf(this.lowercaseFilter) > -1 ||
+								item.loggerName.toLowerCase().indexOf(this.lowercaseFilter) > -1 ||
+								item.columnOneData.toLowerCase().indexOf(this.lowercaseFilter) > -1 ||
+								item.columnTwoData.toLowerCase().indexOf(this.lowercaseFilter) > -1 ||
+								item.columnThreeData.toLowerCase().indexOf(this.lowercaseFilter) > -1 ||
+								item.dateLogged.toLowerCase().indexOf(this.lowercaseFilter) > -1 ||
+								item.contactName.toLowerCase().indexOf(this.lowercaseFilter) > -1 ||
+								item.contactInformation.toLowerCase().indexOf(this.lowercaseFilter) > -1);
+    	});
+    }
 	}
 }
 </script>
