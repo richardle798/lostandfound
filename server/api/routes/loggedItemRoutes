@@ -2,16 +2,16 @@
 module.exports = function(app) {
   var loggedItemController = require('../controllers/LoggedItemController.js');
 
-  app.route('/logged')
+  app.route('/rest/logged')
     .get(loggedItemController.get_items)
     .post(loggedItemController.create_item);
 
 
-  app.route('/logged/:itemId')
+  app.route('/rest/logged/:itemId')
     .get(loggedItemController.get_item)
     .put(loggedItemController.update_item)
     .delete(loggedItemController.delete_item);
 
-  app.route('/logged/findSimilarItems')
+  app.route('/rest/logged/findSimilarItems')
     .post(loggedItemController.find_similar_items);
 };
