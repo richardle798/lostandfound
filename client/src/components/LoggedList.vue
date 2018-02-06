@@ -81,7 +81,7 @@ export default {
 	},
 	methods:{
 		getloggedItems: function(){
-			this.$http.get('logged').then( (response) => {
+			this.$http.get('rest/logged').then( (response) => {
 				
 				const reversedList = response.body;
 				

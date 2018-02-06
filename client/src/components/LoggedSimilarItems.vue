@@ -123,7 +123,7 @@ export default {
 	},
 	methods:{
 		submitSimilarItem: function(){
-			this.$http.delete('logged/'+this.detailItem._id).then(response =>{}
+			this.$http.delete('rest/logged/'+this.detailItem._id).then(response =>{}
 				, (response) => {
    			alert('Could not save lost item' + response.body);
 			});
@@ -141,21 +141,21 @@ export default {
 				columnThreeData: this.detailItem.columnThreeData
 			};
 
-			this.$http.post('found', foundItem).then( (response) => {
+			this.$http.post('rest/found', foundItem).then( (response) => {
 				this.$router.push({ name: 'LoggedForm'});
   		}, (response) => {
    			alert('Could not save similar item' + response.body);
 			});
 		},
 		submitItem: function(item){
-			this.$http.post('logged', this.item).then( (response) => {
+			this.$http.post('rest/logged', this.item).then( (response) => {
 				this.$router.push({ name: 'LoggedForm'});
   		}, (response) => {
    			alert('Could not save lost item' + response.body);
 			});
 		},
 		findSimilarItems : function(){
-			this.$http.post('logged/findSimilarItems', this.item).then( (response) => {
+			this.$http.post('rest/logged/findSimilarItems', this.item).then( (response) => {
 
     		this.similarItems = response.body;
 

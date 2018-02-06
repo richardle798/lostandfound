@@ -7,7 +7,10 @@ import VueResource from 'vue-resource'
 const styleSheet = require('./assets/styles.css');
 
 Vue.use(VueResource);
-Vue.http.options.root = 'http://localhost:3000/rest/';
+
+if(process.env.NODE_ENV === 'development'){
+  Vue.http.options.root  = 'http://localhost:3000/';
+}
 
 Vue.config.productionTip = false
 

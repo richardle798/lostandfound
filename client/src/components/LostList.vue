@@ -83,7 +83,7 @@ export default {
 	},
 	methods:{
 		getLostItems: function(){
-			this.$http.get('lost').then( (response) => {
+			this.$http.get('rest/lost').then( (response) => {
 				
 				const reversedList = response.body;
 				

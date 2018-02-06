@@ -85,7 +85,7 @@ export default {
 	},
 	methods:{
 		getfoundItems: function(){
-			this.$http.get('found').then( (response) => {
+			this.$http.get('rest/found').then( (response) => {
 				
 				const reversedList = response.body;
 				

@@ -4,12 +4,18 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
 
-var app = express();
+const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors());
 app.use(morgan('combined'));
+
+if(process.env.NODE_ENV === 'development'){
+    app.use(cors());
+}
+else{
+    app.use(express.static('dist'));
+}
 
 //models
 const lostItem = require('./api/models/LostItem');

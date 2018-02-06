@@ -4,14 +4,15 @@
   "description": "UNC lost and found",
   "main": "index.js",
   "scripts": {
-    "start-dev": "nodemon server.js",
-    "start": "node server.js"
+    "start-dev": "cross-env NODE_ENV=development nodemon server.js",
+    "start-prod": "cross-env NODE_ENV=production node server.js"
   },
   "author": "richardle798",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.1",
     "cors": "^2.8.4",
+    "cross-env": "^5.1.3",
     "express": "^4.15.4",
     "heap": "^0.2.6",
     "mongoose": "^4.11.12",
