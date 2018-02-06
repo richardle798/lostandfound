@@ -1,0 +1,14 @@
+'use strict';
+module.exports = function(app) {
+  var foundItemController = require('../controllers/FoundItemController.js');
+
+  app.route('/rest/found')
+    .get(foundItemController.get_items)
+    .post(foundItemController.create_item);
+
+
+  app.route('/rest/found/:itemId')
+    .get(foundItemController.get_item)
+    .put(foundItemController.update_item)
+    .delete(foundItemController.delete_item);
+};

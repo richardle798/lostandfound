@@ -1,13 +1,14 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var LoggedItem = mongoose.model('LoggedItem');
 var LostItem = mongoose.model('LostItem');
 var Heap = require('heap');
  
 var SIMILAR_ITEMS_RETURN_AMOUNT = 20;
 
 exports.get_items = function(req, res) {
-  LostItem.find({}, function(err, items) {
+  LoggedItem.find({}, function(err, items) {
     if (err)
       res.send(err);
     res.json(items);
@@ -15,7 +16,7 @@ exports.get_items = function(req, res) {
 };
 
 exports.create_item = function(req, res) {
-  var newItem = new LostItem(req.body);
+  var newItem = new LoggedItem(req.body);
   newItem.save(function(err, item) {
     if (err)
       res.send(err);
@@ -24,7 +25,7 @@ exports.create_item = function(req, res) {
 };
 
 exports.get_item = function(req, res) {
-  LostItem.findById(req.params.itemId, function(err, item) {
+  LoggedItem.findById(req.params.itemId, function(err, item) {
     if (err)
       res.send(err);
     res.json(item);
@@ -32,7 +33,7 @@ exports.get_item = function(req, res) {
 };
 
 exports.update_item = function(req, res) {
-  LostItem.findOneAndUpdate({_id: req.params.itemId}, req.body, {new: true}, function(err, item) {
+  LoggedItem.findOneAndUpdate({_id: req.params.itemId}, req.body, {new: true}, function(err, item) {
     if (err)
       res.send(err);
     res.json(item);
@@ -40,7 +41,7 @@ exports.update_item = function(req, res) {
 };
 
 exports.delete_item = function(req, res) {
-  LostItem.remove({
+  LoggedItem.remove({
     _id: req.params.itemId
   }, function(err, item) {
     if (err)
@@ -50,7 +51,7 @@ exports.delete_item = function(req, res) {
 };
 
 exports.find_similar_items = function(req, res) {
-  var item = new LostItem(req.body);
+  var item = new LoggedItem(req.body);
   var itemCategory = item.category;
 
   LostItem.find({category: itemCategory}, function(err, items) {
@@ -59,13 +60,13 @@ exports.find_similar_items = function(req, res) {
     
     var itemHeap = new Heap(function(a, b){
       var aScore = 0, bScore = 0;
-      if(a.column_one_data == item.column_one_data) aScore++;
-      if(a.column_two_data == item.column_two_data) aScore++;
-      if(a.column_three_data == item.column_three_data) aScore++;
+      if(a.columnOneData.toLowerCase() === item.columnOneData.toLowerCase()) aScore++;
+      if(a.columnTwoData.toLowerCase() === item.columnTwoData.toLowerCase()) aScore++;
+      if(a.columnThreeData.toLowerCase() === item.columnThreeData.toLowerCase()) aScore++;
 
-      if(b.column_one_data == item.column_one_data) bScore++;
-      if(b.column_two_data == item.column_two_data) bScore++;
-      if(b.column_three_data == item.column_three_data) bScore++;
+      if(b.columnOneData.toLowerCase() === item.columnOneData.toLowerCase()) bScore++;
+      if(b.columnTwoData.toLowerCase() === item.columnTwoData.toLowerCase()) bScore++;
+      if(b.columnThreeData.toLowerCase() === item.columnThreeData.toLowerCase()) bScore++;
 
       var diff = bScore - aScore;
 
