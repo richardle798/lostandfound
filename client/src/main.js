@@ -11,6 +11,9 @@ Vue.use(VueResource);
 if(process.env.NODE_ENV === 'development'){
   Vue.http.options.root  = 'http://localhost:3000/';
 }
+else{
+  Vue.http.options.root  = 'https://unc-lost-and-found.herokuapp.com/';
+}
 
 Vue.config.productionTip = false
 
