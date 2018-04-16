@@ -10,10 +10,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan('combined'));
 
+// Redirect all HTTP traffic to HTTPS
+function ensureSecure(req, res, next){
+    if(req.headers["x-forwarded-proto"] === "https"){
+      // OK, continue
+      return next();
+    };
+    res.redirect('https://'+req.hostname+req.url); // handle port numbers if you need non defaults
+  };
+
 if(process.env.NODE_ENV === 'development'){
     app.use(cors());
 }
 else{
+    app.all('*', ensureSecure);
     app.use(express.static('dist'));
 }
 
