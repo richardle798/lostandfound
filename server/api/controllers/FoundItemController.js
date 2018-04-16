@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var FoundItem = mongoose.model('FoundItem');
 var Heap = require('heap');
  
-var SIMILAR_ITEMS_RETURN_AMOUNT = 20;
+const SIMILAR_ITEMS_RETURN_AMOUNT = 20;
 
 exports.get_items = function(req, res) {
   FoundItem.find({}, function(err, items) {
