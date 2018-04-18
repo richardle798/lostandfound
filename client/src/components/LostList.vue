@@ -85,14 +85,10 @@ export default {
 	methods:{
 		getLostItems: function(){
 			this.$http.get('rest/lost').then( (response) => {
-				this.lostItems = [];
-				const reversedList = response.body;
+				this.lostItems = response.body;
 				
-				//list sorted by date in ascending order, need descending so latest is at top
-				for(var i = 0; i < reversedList.length; i++){
-					let item = reversedList[reversedList.length -i - 1];
-					item.dateLogged = new Date(item.dateLogged).toDateString();
-					this.lostItems.push(item);
+				for(var i = 0; i < this.lostItems.length; i++){
+					this.lostItems[i].dateLogged = new Date(this.lostItems[i].dateLogged).toDateString();
 				}
 
   		}, (response) => {

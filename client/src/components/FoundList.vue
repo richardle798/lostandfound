@@ -87,14 +87,10 @@ export default {
 	methods:{
 		getFoundItems: function(){
 			this.$http.get('rest/found').then( (response) => {
-				this.foundItems = [];
-				const reversedList = response.body;
+				this.foundItems = response.body;
 				
-				//list sorted by date in ascending order, need descending so latest is at top
-				for(var i = 0; i < reversedList.length; i++){
-					let item = reversedList[reversedList.length -i - 1];
-					item.dateLogged = new Date(item.dateLogged).toDateString();
-					this.foundItems.push(item);
+				for(var i = 0; i < this.foundItems.length; i++){
+					this.foundItems[i].dateLogged = new Date(this.foundItems[i].dateLogged).toDateString();
 				}
 
   		}, (response) => {

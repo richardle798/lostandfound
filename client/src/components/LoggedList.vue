@@ -83,14 +83,10 @@ export default {
 	methods:{
 		getLoggedItems: function(){
 			this.$http.get('rest/logged').then( (response) => {
-				this.loggedItems = [];
-				const reversedList = response.body;
+				this.loggedItems = response.body;
 				
-				//list sorted by date in ascending order, need descending so latest is at top
-				for(var i = 0; i < reversedList.length; i++){
-					let item = reversedList[reversedList.length -i - 1];
-					item.dateLogged = new Date(item.dateLogged).toDateString();
-					this.loggedItems.push(item);
+				for(var i = 0; i < this.loggedItems.length; i++){
+					this.loggedItems[i].dateLogged = new Date(this.loggedItems[i].dateLogged).toDateString();
 				}
 
   		}, (response) => {

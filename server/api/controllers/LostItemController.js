@@ -8,7 +8,7 @@ var Heap = require('heap');
 const SIMILAR_ITEMS_RETURN_AMOUNT = 20;
 
 exports.get_items = function(req, res) {
-  LostItem.find({}, function(err, items) {
+  LostItem.find({}).sort({dateLogged: 1}).exec(function(err, items) {
     if (err)
       res.send(err);
     res.json(items);
