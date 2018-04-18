@@ -162,7 +162,7 @@ export default {
 			});
 		},
 		getDetails: function(item){
-      this.detailItem.category = item.category[0];
+      this.detailItem.category = item.category;
       this.detailItem.description = item.description;
       this.detailItem.loggerName = item.loggerName;
       this.detailItem.locationStored = item.locationStored;

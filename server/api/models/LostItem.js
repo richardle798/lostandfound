@@ -3,10 +3,8 @@ var Schema = mongoose.Schema;
 
 var lostItem = new Schema({
 	category: {
-		type: [{
-      		type: String,
-      		enum: ['clothes','books','schoolSupplies','accessories','bottles','electronics','cards','keys','other']
-    	}],
+		type: String,
+      	enum: ['clothes','books','schoolSupplies','accessories','bottles','electronics','cards','keys','other'],
 		required: 'Category is required'
 	},
 	description: String,

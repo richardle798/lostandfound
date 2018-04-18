@@ -35,7 +35,7 @@
 			</tr>
 			<tr v-for="loggedItem in filteredItems" v-on:click='getDetails(loggedItem)'>
 				<td>
-					{{loggedItem.category[0]}}
+					{{loggedItem.category}}
 				</td>
 				<td>
 					{{loggedItem.columnOneData}}
@@ -99,7 +99,7 @@ export default {
 		},
 		getDetails: function(loggedItem){
 			this.detailItem._id = loggedItem._id;
-      this.detailItem.category = loggedItem.category[0];
+      this.detailItem.category = loggedItem.category;
       this.detailItem.description = loggedItem.description;
       this.detailItem.loggerName = loggedItem.loggerName;
       this.detailItem.columnOneData = loggedItem.columnOneData;
@@ -129,7 +129,7 @@ export default {
 		},
     filteredItems: function(){
       return this.loggedItems.filter(item => {
-      	return (item.category[0].toLowerCase().indexOf(this.lowercaseFilter) > -1 ||
+      	return (item.category.toLowerCase().indexOf(this.lowercaseFilter) > -1 ||
 								item.description.toLowerCase().indexOf(this.lowercaseFilter) > -1 ||
 								item.loggerName.toLowerCase().indexOf(this.lowercaseFilter) > -1 ||
 								item.columnOneData.toLowerCase().indexOf(this.lowercaseFilter) > -1 ||
