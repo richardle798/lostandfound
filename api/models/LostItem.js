@@ -3,10 +3,8 @@ var Schema = mongoose.Schema;
 
 var lostItem = new Schema({
 	category: {
-		type: [{
-      		type: String,
-      		enum: ['clothes','books','schoolSupplies','accessories','bottles','electronics','cards','keys','other']
-    	}],
+		type: String,
+      	enum: ['clothes','books','schoolSupplies','accessories','bottles','electronics','cards','keys','other'],
 		required: 'Category is required'
 	},
 	description: String,
@@ -30,5 +28,7 @@ var lostItem = new Schema({
 	columnTwoData: String,
 	columnThreeData: String
 });
+
+lostItem.index({ category : 1});
 
 module.exports = mongoose.model('LostItem', lostItem);
