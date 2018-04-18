@@ -2,8 +2,8 @@
   <div class="page-body">
 		<h2>Found Items</h2>
   	<input class="search-bar" type="text" v-model="filter" placeholder="Filter Items">
-    <item-modal v-if="showItemModal" v-bind:item="detailItem" v-on:close="showItemModal=false">
-			<h2 slot="header">Logged Item</h2>
+    <item-modal v-if="showItemModal" v-bind:item="detailItem" v-on:close="showItemModal=false" v-on:deleteItem="deleteItem()">
+			<h2 slot="header">Found Item</h2>
 			<ul class="item-detail-list" slot="body">
 				<li>Category: {{detailItem.category}}</li>
 				<li>Column One: {{detailItem.columnOneData}}</li>
@@ -66,6 +66,7 @@ export default {
     return{
       loggedItems:[],
       detailItem:{
+				_id: "",
         category: "",
       	description: "",
       	loggerName: "",
@@ -80,9 +81,9 @@ export default {
     }
 	},
 	methods:{
-		getloggedItems: function(){
+		getLoggedItems: function(){
 			this.$http.get('rest/logged').then( (response) => {
-				
+				this.loggedItems = [];
 				const reversedList = response.body;
 				
 				//list sorted by date in ascending order, need descending so latest is at top
@@ -97,6 +98,7 @@ export default {
 			});
 		},
 		getDetails: function(loggedItem){
+			this.detailItem._id = loggedItem._id;
       this.detailItem.category = loggedItem.category[0];
       this.detailItem.description = loggedItem.description;
       this.detailItem.loggerName = loggedItem.loggerName;
@@ -107,10 +109,19 @@ export default {
 			this.detailItem.locationStored = loggedItem.locationStored;
 
       this.showItemModal = true;
+		},
+		deleteItem: function(){
+			this.$http.delete('rest/logged/'+this.detailItem._id).then(response =>{
+				this.getLoggedItems();
+				this.showItemModal = false;
+			}
+				, (response) => {
+   			alert('Could not delete found item' + response.body);
+			});
 		}
 	},
 	created(){
-		this.getloggedItems();
+		this.getLoggedItems();
 	},
 	computed: {
 		lowercaseFilter: function(){

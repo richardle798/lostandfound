@@ -162,6 +162,7 @@ padding-left:150%;
   
   .modal-footer button {
     float:right;
+    margin-left: 5%;
   }
   
   .modal-enter {

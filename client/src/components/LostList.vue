@@ -2,7 +2,7 @@
   <div class="page-body">
 		<h2>Lost Items</h2>
   	<input class="search-bar" type="text" v-model="filter" placeholder="Filter Items">
-    <item-modal v-if="showItemModal" v-bind:item="detailItem" v-on:close="showItemModal=false">
+    <item-modal v-if="showItemModal" v-bind:item="detailItem" v-on:close="showItemModal=false" v-on:deleteItem="deleteItem()">
 			<h2 slot="header">Lost Item</h2>
 			<ul class="item-detail-list" slot="body">
 				<li>Category: {{detailItem.category}}</li>
@@ -67,6 +67,7 @@ export default {
     return{
       lostItems:[],
       detailItem:{
+				_id: "",
         category: "",
       	description: "",
       	loggerName: "",
@@ -84,7 +85,7 @@ export default {
 	methods:{
 		getLostItems: function(){
 			this.$http.get('rest/lost').then( (response) => {
-				
+				this.lostItems = [];
 				const reversedList = response.body;
 				
 				//list sorted by date in ascending order, need descending so latest is at top
@@ -99,7 +100,8 @@ export default {
 			});
 		},
 		getDetails: function(lostItem){
-      this.detailItem.category = lostItem.category[0];
+			this.detailItem._id = lostItem._id;
+			this.detailItem.category = lostItem.category[0];
       this.detailItem.description = lostItem.description;
       this.detailItem.loggerName = lostItem.loggerName;
       this.detailItem.contactName = lostItem.contactName;
@@ -110,6 +112,15 @@ export default {
 			this.detailItem.dateLogged = lostItem.dateLogged;
 
       this.showItemModal = true;
+		},
+		deleteItem: function(){
+			this.$http.delete('rest/lost/'+this.detailItem._id).then(response =>{
+				this.getLostItems();
+				this.showItemModal = false;
+			}
+				, (response) => {
+   			alert('Could not delete lost item' + response.body);
+			});
 		}
 	},
 	created(){

@@ -2,8 +2,8 @@
   <div class="page-body">
 		<h2>Matched Items</h2>
   	<input class="search-bar" type="text" v-model="filter" placeholder="Filter Items">
-    <item-modal v-if="showItemModal" v-bind:item="detailItem" v-on:close="showItemModal=false">
-			<h2 slot="header">Found Item</h2>
+    <item-modal v-if="showItemModal" v-bind:item="detailItem" v-on:close="showItemModal=false" v-on:deleteItem="deleteItem()">
+			<h2 slot="header">Matched Item</h2>
 			<ul class="item-detail-list" slot="body">
 				<li>Category: {{detailItem.category}}</li>
 				<li>Column One: {{detailItem.columnOneData}}</li>
@@ -68,6 +68,7 @@ export default {
     return{
       foundItems:[],
       detailItem:{
+				_id: "",
         category: "",
       	description: "",
       	loggerName: "",
@@ -84,9 +85,9 @@ export default {
     }
 	},
 	methods:{
-		getfoundItems: function(){
+		getFoundItems: function(){
 			this.$http.get('rest/found').then( (response) => {
-				
+				this.foundItems = [];
 				const reversedList = response.body;
 				
 				//list sorted by date in ascending order, need descending so latest is at top
@@ -101,6 +102,7 @@ export default {
 			});
 		},
 		getDetails: function(foundItem){
+			this.detailItem._id = foundItem._id;
       this.detailItem.category = foundItem.category[0];
       this.detailItem.description = foundItem.description;
       this.detailItem.loggerName = foundItem.loggerName;
@@ -113,10 +115,19 @@ export default {
 			this.detailItem.locationStored = foundItem.locationStored;
 
       this.showItemModal = true;
+		},
+		deleteItem: function(){
+			this.$http.delete('rest/found/'+this.detailItem._id).then(response =>{
+				this.getFoundItems();
+				this.showItemModal = false;
+			}
+				, (response) => {
+   			alert('Could not delete matched item' + response.body);
+			});
 		}
 	},
 	created(){
-		this.getfoundItems();
+		this.getFoundItems();
 	},
 	computed: {
 		lowercaseFilter: function(){
