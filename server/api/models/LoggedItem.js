@@ -3,10 +3,8 @@ var Schema = mongoose.Schema;
 
 var loggedItem = new Schema({
 	category: {
-		type: [{
-      		type: String,
-      		enum: ['clothes','books','schoolSupplies','accessories','bottles','electronics','cards','keys','other']
-    	}],
+		type: String,
+      	enum: ['clothes','books','schoolSupplies','accessories','bottles','electronics','cards','keys','other'],
 		required: 'Category is required'
 	},
 	description: String,
@@ -26,5 +24,7 @@ var loggedItem = new Schema({
 	columnTwoData: String,
 	columnThreeData: String
 });
+
+loggedItem.index({ category : 1});
 
 module.exports = mongoose.model('LoggedItem', loggedItem);

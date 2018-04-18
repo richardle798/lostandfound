@@ -37,7 +37,7 @@
 			</tr>
 			<tr v-for="foundItem in filteredItems" v-on:click='getDetails(foundItem)'>
 				<td>
-					{{foundItem.category[0]}}
+					{{foundItem.category}}
 				</td>
 				<td>
 					{{foundItem.columnOneData}}
@@ -87,14 +87,10 @@ export default {
 	methods:{
 		getFoundItems: function(){
 			this.$http.get('rest/found').then( (response) => {
-				this.foundItems = [];
-				const reversedList = response.body;
+				this.foundItems = response.body;
 				
-				//list sorted by date in ascending order, need descending so latest is at top
-				for(var i = 0; i < reversedList.length; i++){
-					let item = reversedList[reversedList.length -i - 1];
-					item.dateLogged = new Date(item.dateLogged).toDateString();
-					this.foundItems.push(item);
+				for(var i = 0; i < this.foundItems.length; i++){
+					this.foundItems[i].dateLogged = new Date(this.foundItems[i].dateLogged).toDateString();
 				}
 
   		}, (response) => {
@@ -103,7 +99,7 @@ export default {
 		},
 		getDetails: function(foundItem){
 			this.detailItem._id = foundItem._id;
-      this.detailItem.category = foundItem.category[0];
+      this.detailItem.category = foundItem.category;
       this.detailItem.description = foundItem.description;
       this.detailItem.loggerName = foundItem.loggerName;
       this.detailItem.contactName = foundItem.contactName;
@@ -135,7 +131,7 @@ export default {
 		},
     filteredItems: function(){
       return this.foundItems.filter(item => {
-      	return (item.category[0].toLowerCase().indexOf(this.lowercaseFilter) > -1 ||
+      	return (item.category.toLowerCase().indexOf(this.lowercaseFilter) > -1 ||
 								item.description.toLowerCase().indexOf(this.lowercaseFilter) > -1 ||
 								item.loggerName.toLowerCase().indexOf(this.lowercaseFilter) > -1 ||
 								item.columnOneData.toLowerCase().indexOf(this.lowercaseFilter) > -1 ||
