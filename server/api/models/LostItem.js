@@ -29,4 +29,6 @@ var lostItem = new Schema({
 	columnThreeData: String
 });
 
+lostItem.index({ category : 1});
+
 module.exports = mongoose.model('LostItem', lostItem);

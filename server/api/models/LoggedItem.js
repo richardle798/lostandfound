@@ -25,4 +25,6 @@ var loggedItem = new Schema({
 	columnThreeData: String
 });
 
+loggedItem.index({ category : 1});
+
 module.exports = mongoose.model('LoggedItem', loggedItem);
