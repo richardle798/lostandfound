@@ -19,7 +19,10 @@
 						<div class="modal-footer">
 							<slot name="footer">
 								<button @click="closeModal()">
-									OK
+									Close
+								</button>
+								<button @click="deleteItem()">
+									Delete Item
 								</button>
 							</slot>
 						</div>
@@ -48,7 +51,10 @@ export default {
 				//TODO: implement update
         //this.$emit('update');
       }
-    }
+		},
+		deleteItem: function(){
+			this.$emit('deleteItem');
+		}
   }
 };
 </script>
