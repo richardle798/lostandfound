@@ -12,10 +12,10 @@ body {
 }
 
 .bottomText{
-  padding-left:10px;
+  padding-left:1%;
   text-align: left;
   vertical-align:bottom;
-  margin-bottom: 5px;
+  margin-bottom: 0;
 }
 
 .topHeader h1{
@@ -34,7 +34,7 @@ body {
     display: block;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 30px;
+    padding: 1% 2%;
     text-decoration: none;
     font-size: 17px;
 }
@@ -52,7 +52,7 @@ body {
 
 .formFields{
   text-align:center;
-  padding-top:5px;
+  padding-top:1%;
 }
 
 .leftField{
@@ -65,7 +65,7 @@ body {
 }
 
 .categoryFormat{
-	padding-bottom:50px;
+	padding-bottom:2%;
 }
 
 input{
@@ -78,12 +78,13 @@ select{
 .formNoBorder{
 	margin:auto;
 	padding-left:10%;
-	padding-right:10%;
+  padding-right:10%;
+  white-space: nowrap;
 }
 .formNoBorder td{
 	text-align:left;
-	padding-right:20px;
-	padding-bottom:10px;
+	padding-right:2%;
+  padding-bottom:2%;
 }
 .middleSpace{
 padding-left:150%;
@@ -104,12 +105,12 @@ padding-left:150%;
 .itemsTable th{
     text-align: center;
     background-color: #4B9CD3;
-    padding: 8px;
+    padding: 1%;
 }
 
 .itemsTable td, th{
     border: 1px solid rgb(34, 88, 150);
-    padding: 3px;
+    padding: .2%;
 	text-align:left;
 }
 
@@ -142,7 +143,7 @@ padding-left:150%;
   .modal-container {
     width: 300px;
     margin: 0px auto;
-    padding: 20px 30px;
+    padding: 2% 3%;
     background-color: #fff;
     border-radius: 2px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
@@ -156,7 +157,7 @@ padding-left:150%;
   }
   
   .modal-body {
-    margin: 20px 0;
+    margin: 2% 0;
   }
   
   .modal-footer button {
@@ -185,7 +186,7 @@ padding-left:150%;
   }
 
   .item-detail-list li{
-    padding-bottom:5px;
+    padding-bottom:1%;
   }
 
   .search-bar{
